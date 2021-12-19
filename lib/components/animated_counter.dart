@@ -6,24 +6,56 @@ class AnimatedCounter extends StatelessWidget {
   const AnimatedCounter({
     Key? key,
     required this.value,
-    this.text,
+    required this.valueSuffix,
   }) : super(key: key);
 
   final int value;
-  final String? text;
+  final String valueSuffix;
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       tween: IntTween(begin: 0, end: value),
       duration: defaultDuration,
-      builder: (context, value, child) => Text(
-        "$value$text",
-        style: Theme.of(context)
-            .textTheme
-            .headline6!
-            .copyWith(color: primaryColor),
-      ),
+      builder: (
+        BuildContext context,
+        int value,
+        Widget? child,
+      ) {
+        return Text(
+          "$value$valueSuffix",
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(color: primaryColor),
+        );
+      },
     );
   }
 }
+
+// class AnimatedCounter extends StatelessWidget {
+//   const AnimatedCounter({
+//     Key? key,
+//     required this.value,
+//     this.text,
+//   }) : super(key: key);
+
+//   final int value;
+//   final String? text;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return TweenAnimationBuilder(
+//       tween: IntTween(begin: 0, end: value),
+//       duration: defaultDuration,
+//       builder: (context, value, child) => Text(
+//         "$value$text",
+//         style: Theme.of(context)
+//             .textTheme
+//             .headline6!
+//             .copyWith(color: primaryColor),
+//       ),
+//     );
+//   }
+// }
