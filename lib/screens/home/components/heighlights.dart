@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_profile/components/animated_counter.dart';
 import 'package:flutter_profile/responsive.dart';
 
-import '../../../constants.dart';
+import 'package:flutter_profile/constants.dart';
 import 'heigh_light.dart';
 
 class HighlightsInfo extends StatelessWidget {

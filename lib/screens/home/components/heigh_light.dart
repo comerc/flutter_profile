@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_profile/components/animated_counter.dart';
 
-import '../../../constants.dart';
+import 'package:flutter_profile/constants.dart';
 
 class HeightLight extends StatelessWidget {
   const HeightLight({
