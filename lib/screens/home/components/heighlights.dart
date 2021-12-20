@@ -14,31 +14,67 @@ class HighlightsInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const HeightLight(
-            value: 119,
-            valueSuffix: "K+",
-            label: "Subscribers",
-          ),
-          const HeightLight(
-            value: 40,
-            valueSuffix: "+",
-            label: "Videos",
-          ),
-          const HeightLight(
-            value: 30,
-            valueSuffix: "+",
-            label: "GitHub Projects",
-          ),
-          const HeightLight(
-            value: 13,
-            valueSuffix: "K+",
-            label: "Stars",
-          ),
-        ],
-      ),
+      child: Responsive.isMobileLarge(context)
+          ? Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const HeightLight(
+                      value: 119,
+                      valueSuffix: "K+",
+                      label: "Subscribers",
+                    ),
+                    const HeightLight(
+                      value: 40,
+                      valueSuffix: "+",
+                      label: "Videos",
+                    ),
+                  ],
+                ),
+                const SizedBox(height: defaultPadding),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const HeightLight(
+                      value: 30,
+                      valueSuffix: "+",
+                      label: "GitHub Projects",
+                    ),
+                    const HeightLight(
+                      value: 13,
+                      valueSuffix: "K+",
+                      label: "Stars",
+                    ),
+                  ],
+                ),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const HeightLight(
+                  value: 119,
+                  valueSuffix: "K+",
+                  label: "Subscribers",
+                ),
+                const HeightLight(
+                  value: 40,
+                  valueSuffix: "+",
+                  label: "Videos",
+                ),
+                const HeightLight(
+                  value: 30,
+                  valueSuffix: "+",
+                  label: "GitHub Projects",
+                ),
+                const HeightLight(
+                  value: 13,
+                  valueSuffix: "K+",
+                  label: "Stars",
+                ),
+              ],
+            ),
     );
   }
 }

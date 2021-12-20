@@ -29,7 +29,7 @@ class ProjectCard extends StatelessWidget {
           Spacer(),
           Text(
             model.description,
-            maxLines: 4,
+            maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(height: 1.5),
           ),
@@ -85,7 +85,7 @@ class ProjectCard extends StatelessWidget {
 //           TextButton(
 //             onPressed: () {},
 //             child: Text(
-//               " >>",
+//               "Read More >>",
 //               style: TextStyle(color: primaryColor),
 //             ),
 //           ),

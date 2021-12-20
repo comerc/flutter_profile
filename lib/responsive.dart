@@ -3,24 +3,24 @@ import 'package:flutter/material.dart';
 // We will modify it once we have our final design
 
 class Responsive extends StatelessWidget {
-  final Widget mobile;
-  final Widget? mobileLarge;
-  final Widget? tablet;
-  final Widget desktop;
-
   const Responsive({
     Key? key,
     required this.mobile,
-    this.tablet,
+    required this.tablet,
     required this.desktop,
-    this.mobileLarge,
+    required this.mobileLarge,
   }) : super(key: key);
 
+  final Widget mobile;
+  final Widget mobileLarge;
+  final Widget tablet;
+  final Widget desktop;
+
   static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width <= 500;
+      MediaQuery.of(context).size.width < 500;
 
   static bool isMobileLarge(BuildContext context) =>
-      MediaQuery.of(context).size.width <= 700;
+      MediaQuery.of(context).size.width < 700;
 
   static bool isTablet(BuildContext context) =>
       MediaQuery.of(context).size.width < 1024;
@@ -30,15 +30,55 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery.of(context).size;
-    if (_size.width >= 1024) {
+    if (!Responsive.isTablet(context)) {
       return desktop;
-    } else if (_size.width >= 700 && tablet != null) {
-      return tablet!;
-    } else if (_size.width >= 500 && mobileLarge != null) {
-      return mobileLarge!;
+    } else if (!Responsive.isMobileLarge(context)) {
+      return tablet;
+    } else if (!Responsive.isMobile(context)) {
+      return mobileLarge;
     } else {
       return mobile;
     }
   }
 }
+
+// class Responsive extends StatelessWidget {
+//   final Widget mobile;
+//   final Widget? mobileLarge;
+//   final Widget? tablet;
+//   final Widget desktop;
+
+//   const Responsive({
+//     Key? key,
+//     required this.mobile,
+//     this.tablet,
+//     required this.desktop,
+//     this.mobileLarge,
+//   }) : super(key: key);
+
+//   static bool isMobile(BuildContext context) =>
+//       MediaQuery.of(context).size.width <= 500;
+
+//   static bool isMobileLarge(BuildContext context) =>
+//       MediaQuery.of(context).size.width <= 700;
+
+//   static bool isTablet(BuildContext context) =>
+//       MediaQuery.of(context).size.width < 1024;
+
+//   static bool isDesktop(BuildContext context) =>
+//       MediaQuery.of(context).size.width >= 1024;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final Size _size = MediaQuery.of(context).size;
+//     if (_size.width >= 1024) {
+//       return desktop;
+//     } else if (_size.width >= 700 && tablet != null) {
+//       return tablet!;
+//     } else if (_size.width >= 500 && mobileLarge != null) {
+//       return mobileLarge!;
+//     } else {
+//       return mobile;
+//     }
+//   }
+// }
